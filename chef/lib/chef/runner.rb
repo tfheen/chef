@@ -93,10 +93,15 @@ class Chef
       @collection.execute_each_resource do |resource|
         begin
           Chef::Log.debug("Processing #{resource}")
+          cwd = nil
+          begin
+            cwd = resource.cwd
+          rescue NoMethodError
+          end
           
           # Check if this resource has an only_if block - if it does, skip it.
           if resource.only_if
-            unless Chef::Mixin::Command.only_if(resource.only_if)
+            unless Chef::Mixin::Command.only_if(resource.only_if, cwd)
               Chef::Log.debug("Skipping #{resource} due to only_if")
               next
             end
@@ -104,7 +109,7 @@ class Chef
           
           # Check if this resource has a not_if block - if it does, skip it.
           if resource.not_if
-            unless Chef::Mixin::Command.not_if(resource.not_if)
+            unless Chef::Mixin::Command.not_if(resource.not_if, cwd)
               Chef::Log.debug("Skipping #{resource} due to not_if")
               next
             end

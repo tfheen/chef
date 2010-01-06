@@ -39,14 +39,20 @@ class Chef
       # === Returns
       # true:: Returns true if the block is true, or if the command returns 0
       # false:: Returns false if the block is false, or if the command returns a non-zero exit code.
-      def only_if(command)
+      def only_if(command, cwd = nil)
         if command.kind_of?(Proc)
-          res = command.call
-          unless res
-            return false
+          cwd ||= Dir.tmpdir
+          unless File.directory?(cwd)
+            raise Chef::Exceptions::Exec, "#{cwd} does not exist or is not a directory"
+          end
+          Dir.chdir(cwd) do
+            res = command.call
+            unless res
+              return false
+            end
           end
         else  
-          status = run_command(:command => command, :ignore_failure => true)
+          status = run_command(:command => command, :ignore_failure => true, :cwd => cwd)
           if status.exitstatus != 0
             return false
           end
@@ -68,14 +74,20 @@ class Chef
       # === Returns
       # true:: Returns true if the block is false, or if the command returns a non-zero exit status.
       # false:: Returns false if the block is true, or if the command returns a 0 exit status.
-      def not_if(command)
+      def not_if(command, cwd = nil)
         if command.kind_of?(Proc)
-          res = command.call
-          if res
-            return false
+          cwd ||= Dir.tmpdir
+          unless File.directory?(cwd)
+            raise Chef::Exceptions::Exec, "#{cwd} does not exist or is not a directory"
+          end
+          Dir.chdir(cwd) do
+            res = command.call
+            if res
+              return false
+            end
           end
         else  
-          status = run_command(:command => command, :ignore_failure => true)
+          status = run_command(:command => command, :ignore_failure => true, :cwd => cwd)
           if status.exitstatus == 0
             return false
           end
