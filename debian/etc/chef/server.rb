@@ -151,3 +151,5 @@ role_path          "/srv/chef/roles"
 
 Mixlib::Log::Formatter.show_time = true
 
+signing_ca_cert "/etc/chef/certificates/cert.pem"
+signing_ca_key "/etc/chef/certificates/key.pem"
