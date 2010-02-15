@@ -20,7 +20,6 @@ end
 
 Thread.abort_on_exception = true
 
-require 'rubygems'
 require 'spec'
 require 'chef'
 require 'chef/config'

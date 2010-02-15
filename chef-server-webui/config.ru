@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'merb-core'
 
 Dir.chdir(::File.dirname(__FILE__))

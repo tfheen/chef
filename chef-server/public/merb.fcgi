@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
                                                                
-require 'rubygems'
 require 'merb-core'
 
 # this is Merb.root, change this if you have some funky setup.
