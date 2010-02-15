@@ -45,6 +45,8 @@ install/libchef-ruby1.8::
 	mkdir -p $(CURDIR)/debian/chef/usr/bin
 	mv $(CURDIR)/debian/libchef-ruby1.8/usr/bin/chef-client $(CURDIR)/debian/chef/usr/bin/
 	mv $(CURDIR)/debian/libchef-ruby1.8/usr/bin/chef-solo $(CURDIR)/debian/chef/usr/bin/
+	mv $(CURDIR)/debian/libchef-ruby1.8/usr/bin/knife $(CURDIR)/debian/chef/usr/bin/
+	mv $(CURDIR)/debian/libchef-ruby1.8/usr/bin/shef $(CURDIR)/debian/chef/usr/bin/
 	rmdir $(CURDIR)/debian/libchef-ruby1.8/usr/bin/
 
 install/chef-solr::
