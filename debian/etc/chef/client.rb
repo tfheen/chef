@@ -26,7 +26,7 @@ log_level          :info
 # valid values are: a quoted string specifying a file, or STDOUT with
 # no quotes. When run as a daemon (default), STDOUT will produce no output.
 
-log_location       "/var/log/chef/client.log"
+log_location       STDOUT
 
 # ssl_verify_mode specifies if the REST client should verify SSL certificates.
 # valid values are :verify_none, :verify_peer. The default Chef Server 
