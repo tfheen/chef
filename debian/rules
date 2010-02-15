@@ -47,10 +47,13 @@ install/libchef-ruby1.8::
 	mv $(CURDIR)/debian/libchef-ruby1.8/usr/bin/chef-solo $(CURDIR)/debian/chef/usr/bin/
 	rmdir $(CURDIR)/debian/libchef-ruby1.8/usr/bin/
 
-install/chef-indexer::
-	mkdir -p $(CURDIR)/debian/chef-indexer/usr/bin
-	cp debian/etc/chef/indexer.rb debian/chef-indexer/etc/chef
-	cp chef-server/bin/chef-indexer debian/chef-indexer/usr/bin
+install/chef-solr::
+	cp debian/etc/chef/solr.rb debian/chef-solr/etc/chef
+	cp chef-solr/bin/chef-solr-indexer debian/chef-solr/usr/sbin
+	cp chef-solr/bin/chef-solr-rebuild debian/chef-solr/usr/sbin
+	cp chef-solr/bin/chef-solr debian/chef-solr/usr/sbin
+	cp -r chef-solr/lib debian/chef-solr/usr/share/chef-solr
+	dh_installinit --name=chef-solr-indexer
 
 install/chef-server::
 	mkdir -p $(CURDIR)/debian/chef-server/usr/bin

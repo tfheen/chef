@@ -1,5 +1,5 @@
 #!/bin/sh
-# postrm script for chef-indexer
+# postrm script for chef-solr
 #
 # see: dh_installdeb(1)
 
@@ -7,7 +7,7 @@ set -e
 
 case "$1" in
     purge)
-      rm -rf /var/log/chef/indexer*
+      rm -rf /var/log/chef/solr*
     ;;
     remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
     ;;
