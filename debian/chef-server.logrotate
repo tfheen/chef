@@ -3,7 +3,7 @@
   weekly
   compress
   postrotate
-  /etc/init.d/chef-server force-reload
+	/usr/sbin/invoke-rc.d chef-server force-reload > /dev/null
   endscript
 }
 
