@@ -1,8 +1,20 @@
-chef (0.8.0-1) unstable; urgency=low
+chef (0.8.0~20100210+git+efd1c5-1) unstable; urgency=low
 
-  * New upstream release
+  * Upstream snapshot release.
+  * Add versioned depends on libextlib-ruby to ensure we get a version
+    without "require 'rubygems'"
+  * Rename chef-server-slice to chef-server-api
+  * Change depends on lib*-ruby to lib*-ruby1.8 to make versioned
+    dependencies work as well as making sure we actually have the 1.8
+    versions installed, as we depend on ruby 1.8.
+  * Change Chef::Log::Formatter to Mixlib::Log::Formatter in client.rb and
+    server.rb.
+  * Add signing_ca_{cert,key} settings to server.rb to ensure we get the
+    certificates in the right place.
+  * Rename chef-indexer to chef-solr and fix up for changes in the
+    upstream switch to solr.
 
- -- Joshua Timberman <joshua@opscode.com>  Tue, 22 Dec 2009 10:20:14 -0700
+ -- Tollef Fog Heen <tfheen@varnish-software.com>  Wed, 10 Feb 2010 09:46:18 +0100
 
 chef (0.7.14-3) unstable; urgency=low
 
