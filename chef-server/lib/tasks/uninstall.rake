@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'rake/gempackagetask'
 
 task :uninstall do

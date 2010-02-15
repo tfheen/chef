@@ -16,7 +16,6 @@
 # limitations under the License.
 #
 
-require 'rubygems'
 require 'json'
 require 'chef'
 require 'chef/role'

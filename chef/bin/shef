@@ -19,7 +19,6 @@
 # limitations under the License.
 
 # TODO::EVIL
-require "rubygems"
 require "mixlib/cli"
 
 require "irb"

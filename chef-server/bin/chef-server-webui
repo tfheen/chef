@@ -23,7 +23,6 @@
 # Add chef and chef-server-slice lib dirs to the load path
 # Load chef and chef-server slice from source rather than gem, if present
 
-require "rubygems"
 require "merb-core"
 
 [ 'chef', 'chef-server-webui' ].each do |lib|
@@ -38,11 +37,7 @@ ObjectSpace.each_object(Gem::Specification) do |gem|
   break
 end
 
-# Ensure the chef gem we load is the same version as the chef server
-unless defined?(Chef)
-  gem "chef", "=" + CHEF_SERVER_VERSION if CHEF_SERVER_VERSION
-  require 'chef'  
-end
+# XXX Make noise for version mismatch
 
 Dir.chdir File.join(File.dirname(__FILE__),"..")
 __DIR__ = Dir.getwd
