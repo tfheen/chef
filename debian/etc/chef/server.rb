@@ -61,7 +61,7 @@ registration_url   "http://localhost:4000"
 # pre-shared key authentication and authorization architecture in a future 
 # release of Chef. This is currently scheduled for version 0.8.0.
 
-openid_url         "http://localhost:4001"
+openid_url         "http://localhost:4000"
 
 # template_url specifies the URL where clients should retrieve templates.
 # valid values are any HTTP URL.
