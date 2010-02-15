@@ -8,7 +8,7 @@
 # Short-Description:  Start a chef-server.
 ### END INIT INFO
 #
-# Copyright (c) 2009 Joshua Timberman, <joshua@opscode.com>
+# Copyright (c) 2009-2010 Opscode, Inc <legal@opscode.com>
 #
 # chef-server         Startup script for chef-server.
 # chkconfig: - 98 02
@@ -22,7 +22,7 @@ LOGFILE=/var/log/chef/merb.%s.log
 MASTER=master
 NAME=chef-server
 DESC=chef-server
-DAEMON_OPTS="-d -c2 -P $PIDFILE -L $LOGFILE"
+DAEMON_OPTS="-d -a thin -P $PIDFILE -L $LOGFILE"
 
 test -x $DAEMON || exit 0
 
