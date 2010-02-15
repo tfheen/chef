@@ -19,6 +19,7 @@
 
 $:.unshift(File.expand_path(File.join(File.dirname(__FILE__), "..", "lib")))
 $:.unshift(File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "chef", "lib")))
+$:.unshift(File.expand_path(File.join(File.dirname(__FILE__), "..", "share", "chef-solr", "lib")))
 
 require 'chef/solr/application/indexer'
 
