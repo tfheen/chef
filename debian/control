@@ -69,8 +69,21 @@ Description: Merb slice providing REST API for Chef client access
  clients can connect and is started with the chef-server program.
  .
  This package contains the Merb slice for the chef-server-api.
+
+Package: chef-server-webui
+Architecture: all
+Depends: ${misc:Depends}, ruby, merb-slices, libmerb-param-protection-ruby, libmerb-assets-ruby, libmerb-haml-ruby, libmerb-helpers-ruby, rabbitmq-server, couchdb, thin, libopenid-ruby, libjson-ruby, libchef-ruby ( = ${source:Version} ), libcoderay-ruby
+Suggests: chef
+Description: Merb app slice providing Web interface to API server for Chef
+ Chef is a systems integration framework and configuration management library
+ written in Ruby. Chef provides a Ruby library and API that can be used to
+ bring the benefits of configuration management to an entire infrastructure.
  .
- This package contains the Merb slice for the chef-server.
+ The Chef Server WebUI is a Merb application that accesses the Chef Server API
+ directly to provide an easy to use interface for managing Chef clients and
+ Chef server data.
+ .
+ This package contains the Merb slice and assets for the chef-server-webui.
 
 Package: libchef-ruby
 Architecture: all
