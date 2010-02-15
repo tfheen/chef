@@ -1,0 +1,6 @@
+
+- man pages for chef-server-webui, shef
+- go over depends/recommends: we should be able to recommend couch and
+  other network services
+- create rabbitmq vhost + chef user + permissions and put the
+  information into solr.rb
