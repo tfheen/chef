@@ -27,7 +27,7 @@ log_location       "/var/log/chef/indexer.log"
 
 search_index_path    "/var/lib/chef/search_index"
 
-solr_jetty_path "/usr/share/jetty"
+solr_jetty_path "/var/lib/chef/solr"
 solr_home_path "/var/lib/chef/solr"
 solr_data_path "/var/cache/chef/solr/data"
 solr_heap_size "256M"
