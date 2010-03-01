@@ -1,6 +1,6 @@
 #
-# Author:: Adam Jacob (<adam@opscode.com>)
-# Copyright:: Copyright (c) 2009 Opscode, Inc.
+# Author:: Jan Zimmek (<jan.zimmek@web.de>)
+# Copyright:: Copyright (c) 2010 Jan Zimmek
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,29 +16,18 @@
 # limitations under the License.
 #
 
-require 'chef/knife'
-require 'chef/node'
-require 'json'
+require 'chef/resource/package'
 
 class Chef
-  class Knife
-    class RoleBulkDelete < Knife
-
-      banner "Sub-Command: role bulk delete REGEX (options)"
-
-      def run 
-        if @name_args.length < 1
-          Chef::Log.fatal("You must supply a regular expression to match the results against")
-          exit 42
-        else
-          bulk_delete(Chef::Role, "role", nil, nil, @name_args[0])
-        end
+  class Resource
+    class PacmanPackage < Chef::Resource::Package
+        
+      def initialize(name, collection=nil, node=nil)
+        super(name, collection, node)
+        @resource_name = :pacman_package
+        @provider = Chef::Provider::Package::Pacman
       end
+      
     end
   end
 end
-
-
-
-
-
