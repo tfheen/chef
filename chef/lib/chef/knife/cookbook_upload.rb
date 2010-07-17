@@ -165,7 +165,7 @@ class Chef
         tmp_cookbook_path.close
         tmp_cookbook_dir = tmp_cookbook_path.path
         File.unlink(tmp_cookbook_dir)
-        FileUtils.mkdir_p(tmp_cookbook_dir)
+        FileUtils.mkdir_p(tmp_cookbook_dir, :mode => 0700)
         
         Chef::Log.debug("Staging at #{tmp_cookbook_dir}")
 
