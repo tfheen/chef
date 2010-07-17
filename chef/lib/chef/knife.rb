@@ -254,7 +254,13 @@ class Chef
         tf.sync = true
         tf.puts output
         tf.close
-        raise "Please set EDITOR environment variable" unless system("#{config[:editor]} #{tf.path}") 
+        unless system("#{config[:editor]} #{tf.path}")
+          if $?.exitstatus == 127
+            raise "Editor #{config[:editor]} not found, please set EDITOR environment variable or pass the -e option"
+          else
+            raise "Error editing object, editor exited with status #{$?.exitstatus}"
+          end
+        end
         tf = File.open(filename, "r")
         output = tf.gets(nil)
         tf.close
