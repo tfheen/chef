@@ -94,6 +94,8 @@ class Chef
           # cache.
           valid_cache_entries = Hash.new
           
+          # This needs to come before we save the node
+          set_current_status("Syncing cookbooks")
           save_node
 
           # Sync_cookbooks eagerly loads all files except files and templates.
@@ -106,9 +108,13 @@ class Chef
           run_status.run_context = run_context
 
           assert_cookbook_path_not_empty(run_context)
+
+          set_current_status("Running recipes")
           save_node
           
           converge(run_context)
+
+          set_current_status("Done")
           save_node
           
           cleanup_file_cache(valid_cache_entries)
@@ -127,6 +133,11 @@ class Chef
       ensure
         run_status = nil
       end
+    end
+
+    def set_current_status(status)
+      @node[:chef] ||= Hash.new
+      @node[:chef][:run_status] = status
     end
 
     def run_report_handlers(run_status)
