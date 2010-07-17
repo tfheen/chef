@@ -49,14 +49,6 @@ end
 # Tell merb where to root
 ARGV.push *[ "-m", CHEF_SERVER_API_ROOT]
 
-# attempt to find the user and group that this process will become. Fixes CHEF-1015
-if (index = ARGV.index("-u"))
-  Chef::Config[:signing_ca_user] = ARGV[index+1]
-end
-if (index = ARGV.index("-G"))
-  Chef::Config[:signing_ca_group] = ARGV[index+1]
-end
-
 # Find and load the config
 if index = ARGV.index("-C")
   config = ARGV[index+1]

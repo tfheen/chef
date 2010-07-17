@@ -74,9 +74,6 @@ unless Merb::Config.environment == "test"
   Chef::Sandbox.create_design_document
   Chef::Checksum.create_design_document
 
-  # Create the signing key and certificate
-  Chef::Certificate.generate_signing_ca
-
   # Generate the validation key
   Chef::Certificate.gen_validation_key
 

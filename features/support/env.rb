@@ -89,7 +89,6 @@ def create_databases
   Chef::Checksum.create_design_document
   
   Chef::Role.sync_from_disk_to_couchdb
-  Chef::Certificate.generate_signing_ca
   Chef::Certificate.gen_validation_key
   Chef::Certificate.gen_validation_key(Chef::Config[:web_ui_client_name], Chef::Config[:web_ui_key])
   system("cp #{File.join(Dir.tmpdir, "chef_integration", "validation.pem")} #{Dir.tmpdir}")

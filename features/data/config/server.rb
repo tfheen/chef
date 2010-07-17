@@ -21,7 +21,6 @@ checksum_path          File.expand_path(File.join(File.dirname(__FILE__), "..", 
 openid_store_path      File.join(tmpdir, "openid", "store")
 openid_cstore_path     File.join(tmpdir, "openid", "cstore")
 role_path              File.join(supportdir, "roles")
-signing_ca_path        File.join(tmpdir, "ca")
 couchdb_database       'chef_integration'
 
 systmpdir = File.expand_path(File.join(Dir.tmpdir, "chef_integration"))
