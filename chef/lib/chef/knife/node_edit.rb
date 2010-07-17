@@ -18,6 +18,7 @@
 
 require 'chef/knife'
 require 'chef/node'
+require 'chef/search/query'
 require 'chef/json'
 
 class Chef
@@ -34,8 +35,25 @@ class Chef
           Chef::Log.fatal("You must specify a node name")
           exit 1
         end
-        
-        edit_object(Chef::Node, @node_name)
+
+        begin
+          edit_object(Chef::Node, @node_name)
+        rescue Chef::Exceptions::NodeNotFound
+          # We didn't find it, look for a node with the name set
+          # to what we've been asked to edit
+          begin
+            q = Chef::Search::Query.new
+            nodes = q.search(:node, "name:#{@node_name}*")
+            if nodes[0].length == 1
+              edit_object(Chef::Node, nodes[0][0].name)
+            else
+              node = ask_select_option("Which node do you want to edit?", nodes[0])
+              edit_object(Chef::Node, node.name)
+            end
+          rescue NoMethodError
+            raise Chef::Exceptions::NodeNotFound, "Node #{@node_name} not found"
+          end
+        end
       end
     end
   end

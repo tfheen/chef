@@ -220,6 +220,25 @@ class Chef
       exit(1)
     end
 
+    def ask_select_option(question, options)
+      question << "\n"
+      index = 0
+      options.each do |o|
+        question << "#{index + 1}. #{o.name}\n"
+        index += 1
+      end
+      while true
+        response = ask_question(question).strip
+        begin
+          n = Integer(response)
+          return options[n-1]
+        rescue ArgumentError
+          print "Invalid choice, please try again\n\n"
+          Chef::Log.error("#{response} is not a valid choice")
+        end
+      end
+    end
+
     def ask_question(question, opts={})
       question = question + "[#{opts[:default]}] " if opts[:default]
 

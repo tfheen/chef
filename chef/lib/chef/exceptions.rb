@@ -70,5 +70,6 @@ class Chef
     class InvalidVersionConstraint < ArgumentError; end
     class MissingParentDirectory < RuntimeError; end
     class UnresolvableGitReference < RuntimeError; end
+    class NodeNotFound < RuntimeError; end
   end
 end
