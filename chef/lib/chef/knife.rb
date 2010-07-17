@@ -331,10 +331,12 @@ class Chef
       object = klass.load(name)
 
       output = edit_data(object)
-      
-      output.save
-
-      self.msg("Saved #{output}")
+      if output.to_s != object.to_s
+        output.save
+        self.msg("Saved #{output}")
+      else
+        self.msg("Object unchanged, not saving")
+      end
 
       output(format_for_display(object)) if config[:print_after]
     end
