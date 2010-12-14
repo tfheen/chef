@@ -300,6 +300,10 @@ class Chef
         # just dump the attribute value
         if data.length == 1 and config[:attribute]
           stdout.puts data.values[0]
+        elsif config[:run_list]
+          stdout.puts data["run_list"]
+        elsif data.is_a?(Array)
+          stdout.puts data
         else
           PP.pp(data, stdout)
         end
