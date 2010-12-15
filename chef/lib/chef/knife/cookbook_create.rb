@@ -136,7 +136,6 @@ EOH
 = ATTRIBUTES:
 
 = USAGE:
-
 EOH
           when "md","mkd","txt"
             file.puts <<-EOH
@@ -151,7 +150,6 @@ Attributes
 
 Usage
 =====
-
 EOH
           else
             file.puts <<-EOH
@@ -162,7 +160,6 @@ Requirements
 Attributes
 
 Usage
-
 EOH
           end
         end
